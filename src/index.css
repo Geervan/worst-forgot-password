@@ -1,0 +1,277 @@
+:root {
+  --color-bg: #F7F5F0; /* Cream off-white */
+  --color-text: #2A1A1E; /* Rich burgundy/dark brown */
+  --color-accent: #8C2A3C; /* Burgundy */
+  --color-border: #D6D2C4;
+  --color-success: #3A5F45;
+  --color-warning: #B38641;
+  --color-error: #8C2A3C;
+  --color-surface: #FFFFFF;
+
+  --font-serif: 'Instrument Serif', serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  --space-8: 4rem;
+  
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-mono);
+  background-color: var(--color-bg);
+  background-image: 
+    radial-gradient(circle at center, transparent 0%, var(--color-bg) 100%),
+    linear-gradient(var(--color-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+  background-size: 100% 100%, 40px 40px, 40px 40px;
+  background-position: center, -1px -1px, -1px -1px;
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.5'/%3E%3C/svg%3E");
+  opacity: 0.08;
+  z-index: 50;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: var(--space-3);
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: 3.5rem;
+}
+
+@media (min-width: 768px) {
+  h1 {
+    font-size: 4.5rem;
+  }
+}
+
+p {
+  font-size: 0.875rem;
+  margin-bottom: var(--space-4);
+  color: rgba(42, 26, 30, 0.7);
+}
+
+a {
+  color: var(--color-text);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-border);
+  transition: var(--transition);
+  font-size: 0.875rem;
+}
+
+a:hover {
+  border-bottom-color: var(--color-text);
+  color: var(--color-accent);
+}
+
+button {
+  font-family: var(--font-mono);
+  background-color: var(--color-text);
+  color: var(--color-bg);
+  border: none;
+  padding: var(--space-3) var(--space-4);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: var(--transition);
+  width: 100%;
+}
+
+button:hover {
+  background-color: var(--color-accent);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+input {
+  font-family: var(--font-mono);
+  width: 100%;
+  padding: var(--space-3);
+  border: 1px solid var(--color-border);
+  background-color: transparent;
+  color: var(--color-text);
+  font-size: 1rem;
+  transition: var(--transition);
+  outline: none;
+}
+
+input:focus {
+  border-color: var(--color-text);
+  background-color: var(--color-surface);
+}
+
+input::placeholder {
+  color: rgba(42, 26, 30, 0.4);
+}
+
+.input-group {
+  margin-bottom: var(--space-4);
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-2);
+  color: var(--color-text);
+}
+
+.error-text {
+  color: var(--color-error);
+  font-size: 0.75rem;
+  margin-top: var(--space-2);
+  display: block;
+}
+
+.hint-text {
+  font-size: 0.75rem;
+  color: rgba(42, 26, 30, 0.6);
+  margin-top: var(--space-2);
+  display: block;
+}
+
+/* Layout utilities */
+.page-container {
+  display: flex;
+  min-height: 100vh;
+  padding: var(--space-4);
+}
+
+.auth-wrapper {
+  margin: auto;
+  width: 100%;
+  max-width: 480px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  padding: var(--space-6) var(--space-5);
+  box-shadow: 10px 10px 0px rgba(42, 26, 30, 0.05);
+  position: relative;
+}
+
+.auth-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background-color: var(--color-text);
+}
+
+.auth-header {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-4);
+  margin-bottom: var(--space-5);
+  text-align: center;
+}
+
+.auth-header h1 {
+  margin-bottom: var(--space-2);
+}
+
+.auth-header p {
+  margin-bottom: 0;
+}
+
+/* Animation utilities */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+
+/* Wordle Grid */
+.wordle-grid {
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+
+.wordle-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-2);
+}
+
+.wordle-cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: 1px solid var(--color-border);
+  background-color: transparent;
+  transition: all 0.4s ease;
+}
+
+.wordle-cell.filled {
+  border-color: var(--color-text);
+}
+
+.wordle-cell.correct {
+  background-color: var(--color-success);
+  border-color: var(--color-success);
+  color: var(--color-surface);
+}
+
+.wordle-cell.present {
+  background-color: var(--color-warning);
+  border-color: var(--color-warning);
+  color: var(--color-surface);
+}
+
+.wordle-cell.absent {
+  background-color: var(--color-border);
+  border-color: var(--color-border);
+  color: rgba(42, 26, 30, 0.6);
+}
+
+/* Subtext tone changes */
+.subtext-passive-aggressive {
+  font-style: italic;
+  color: var(--color-accent);
+}
