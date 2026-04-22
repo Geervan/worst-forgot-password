@@ -17,20 +17,20 @@ export default function FinalPage() {
   return (
     <div style={{ height: '100vh', width: '100vw', backgroundColor: 'var(--color-bg)', fontFamily: 'var(--font-mono)', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
       {/* Top Nav */}
-      <nav style={{ padding: 'var(--space-3) var(--space-6)', borderBottom: '1px solid var(--color-border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexShrink: 0 }}>
-        <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.5rem', color: 'var(--color-text)' }}>Capital.</div>
-        <div style={{ display: 'flex', gap: 'var(--space-5)', fontSize: '0.875rem' }}>
+      <nav className="final-nav">
+        <div className="final-logo">Capital.</div>
+        <div className="final-nav-links">
           <span style={{ color: 'var(--color-accent)' }}>Overview</span>
-          <span style={{ cursor: 'pointer' }}>Transactions</span>
-          <span style={{ cursor: 'pointer' }}>Settings</span>
+          <span className="hide-mobile" style={{ cursor: 'pointer' }}>Transactions</span>
+          <span className="hide-mobile" style={{ cursor: 'pointer' }}>Settings</span>
           <span style={{ cursor: 'pointer', opacity: 0.5 }} onClick={() => navigate('/login')}>Logout</span>
         </div>
       </nav>
 
       {/* Main Content */}
-      <main style={{ padding: 'var(--space-4)', maxWidth: '900px', width: '100%', margin: '0 auto', animation: 'fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards', display: 'flex', flexDirection: 'column', flex: 1, minHeight: 0 }}>
-        <header style={{ marginBottom: 'var(--space-4)', flexShrink: 0 }}>
-          <h1 style={{ fontSize: '2.5rem', fontFamily: 'var(--font-serif)', marginBottom: 'var(--space-1)' }}>Welcome back.</h1>
+      <main className="final-main">
+        <header className="final-header" style={{ marginBottom: 'var(--space-4)', flexShrink: 0 }}>
+          <h1>Welcome back.</h1>
           <p style={{ color: 'var(--color-text)', opacity: 0.7, margin: 0 }}>Here is your high-priority briefing for this quarter.</p>
         </header>
 
